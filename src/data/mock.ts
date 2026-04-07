@@ -1,4 +1,101 @@
-import type { Bastion, Drifter, Item } from '../shared/types/world.js';
+import type { Bastion, Drifter, Faction, Item } from '../shared/types/world.js';
+
+export const factions: Faction[] = [
+  {
+    id: 'f-01',
+    name: 'The Council',
+    ideology:
+      'Centralized technocracy focused on order, infrastructure, and controlled recovery.',
+    territory: [
+      'Council vaults',
+      'research enclaves',
+      'high-security bastions',
+    ],
+    description:
+      'A rigid governance bloc that treats knowledge, logistics, and stability as survival assets.',
+  },
+  {
+    id: 'f-02',
+    name: 'The Drifters',
+    ideology:
+      'Nomadic survivalism built on freedom, adaptability, and mutual aid among wasteland travelers.',
+    territory: ['Wasteland routes', 'mobile camps', 'unclaimed ruins'],
+    description:
+      'A loose network of wanderers, scouts, and freelancers who value independence over borders.',
+  },
+  {
+    id: 'f-03',
+    name: 'The Iron Order',
+    ideology:
+      'Militarized authoritarianism built on discipline, hierarchy, and controlled force.',
+    territory: ['Fortified bastions', 'armories', 'checkpoint corridors'],
+    description:
+      'An iron-fisted regime that secures territory through weapons, rules, and uncompromising enforcement.',
+  },
+  {
+    id: 'f-04',
+    name: 'The Consortium',
+    ideology:
+      'Corporate oligarchy that turns trade, intelligence, and scarcity into leverage.',
+    territory: ['Trade hubs', 'industrial bastions', 'logistics corridors'],
+    description:
+      'A wealth-driven network of brokers and industrial power players who profit from controlled scarcity.',
+  },
+  {
+    id: 'f-05',
+    name: 'The Outcasts',
+    ideology:
+      'Exile communities and raider clans united by rejection of the old order.',
+    territory: ['Forbidden zones', 'salt flats', 'abandoned settlements'],
+    description:
+      'A harsh coalition of those pushed out of civilization who survived by hardening into something meaner.',
+  },
+  {
+    id: 'f-06',
+    name: 'Free Merchants',
+    ideology:
+      'Pragmatic commerce built on neutral trade, contract reliability, and open routes.',
+    territory: ['Market bastions', 'convoy routes', 'neutral hubs'],
+    description:
+      'Independent traders and caravan operators who keep the wasteland economy moving wherever profit exists.',
+  },
+  {
+    id: 'f-07',
+    name: 'Scavengers',
+    ideology:
+      'Salvage collectivism centered on recovery, reuse, and scrap-based industry.',
+    territory: ['Junkyards', 'wreck fields', 'scrap depots'],
+    description:
+      'A resource-hungry faction that sees every ruin as inventory waiting to be reclaimed.',
+  },
+  {
+    id: 'f-08',
+    name: 'The Awakened',
+    ideology:
+      'Mystic asceticism shaped by anomaly worship, intuition, and altered perception.',
+    territory: ['Sanctuaries', 'signal shrines', 'anomalous ruins'],
+    description:
+      'A faction convinced the wasteland changed humanity for a reason, and that the answer is hidden in the scars.',
+  },
+  {
+    id: 'f-09',
+    name: 'Independents',
+    ideology:
+      'Local autonomy and self-governance without long-term allegiance to any major power.',
+    territory: ['Border posts', 'edge bastions', 'free settlements'],
+    description:
+      'A scattered collection of settlements and crews that refuse permanent alignment with the dominant factions.',
+  },
+  {
+    id: 'f-10',
+    name: 'Shadow Syndicate',
+    ideology:
+      'Covert power brokerage built on smuggling, sabotage, and information control.',
+    territory: ['Undercities', 'hidden tunnels', 'smuggler routes'],
+    description:
+      'A secretive network that thrives in the gaps between laws, markets, and visible authority.',
+  },
+];
 
 export const bastions: Bastion[] = [
   {
