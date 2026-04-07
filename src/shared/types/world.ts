@@ -28,6 +28,14 @@ export interface Drifter {
   };
 }
 
+export interface Faction {
+  id: string;
+  name: string;
+  ideology: string;
+  territory: string[];
+  description: string;
+}
+
 type ItemEffect =
   | {
       stat: 'status';
