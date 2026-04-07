@@ -1,4 +1,4 @@
-import type { Bastion, Drifter, Faction, Item } from '../shared/types/world.js';
+import type { Bastion, Drifter, Faction, Item, ItemGuideEntry, StatGuideEntry } from '../shared/types/world.js';
 
 export const factions: Faction[] = [
   {
@@ -783,19 +783,6 @@ export const items: Item[] = [
   },
 ];
 
-export interface ItemGuideEntry {
-  itemId: string;
-  name: string;
-  type: string;
-  subtype: string;
-  rarity: 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
-  lore: string;
-  gameplay: string;
-  tips: string[];
-  warnings: string[];
-  foundIn: string[];
-}
-
 export const itemGuide: ItemGuideEntry[] = [
   {
     itemId: 'i-021',
@@ -1026,14 +1013,6 @@ export const itemGuide: ItemGuideEntry[] = [
   },
 ];
 
-export interface StatGuideEntry {
-  stat: string;
-  label: string;
-  appliesTo: ('Weapon' | 'Armor' | 'Medicine' | 'Food')[];
-  description: string;
-  gameplay: string;
-  unit: string | null;
-}
 
 export const statGuide: StatGuideEntry[] = [
   {

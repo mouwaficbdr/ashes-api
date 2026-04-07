@@ -92,3 +92,26 @@ interface FoodItem extends BaseItem {
 }
 
 export type Item = WeaponItem | ArmorItem | MedicineItem | FoodItem;
+
+export interface StatGuideEntry {
+  stat: string;
+  label: string;
+  appliesTo: ('Weapon' | 'Armor' | 'Medicine' | 'Food')[];
+  description: string;
+  gameplay: string;
+  unit: string | null;
+}
+
+export interface ItemGuideEntry {
+  itemId: string;
+  name: string;
+  type: string;
+  subtype: string;
+  rarity: 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
+  lore: string;
+  gameplay: string;
+  tips: string[];
+  warnings: string[];
+  foundIn: string[];
+}
+
