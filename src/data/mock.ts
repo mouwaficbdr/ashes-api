@@ -1,4 +1,4 @@
-import type { Bastion, Drifter } from '../shared/types/world.js';
+import type { Bastion, Drifter, Item } from '../shared/types/world.js';
 
 export const bastions: Bastion[] = [
   {
@@ -521,5 +521,431 @@ export const drifters: Drifter[] = [
       'The Drifters': 65,
       'The Iron Order': -15,
     },
+  },
+];
+
+  export const items: Item[] = [
+  {
+    id: 'i-021',
+    name: 'Tactical Recon Vest',
+    type: 'Armor',
+    subtype: 'chest',
+    rarity: 'Uncommon',
+    weight: 4.2,
+    value: 180,
+    requirements: { level: 10, class: ['Scout', 'Medic'] },
+    stats: { def: 18, res: 10, acc: 0.05 },
+    effects: [],
+    description:
+      'A lightweight, multi-pocketed vest designed for long-range patrols and quick access to medical supplies.',
+  },
+  {
+    id: 'i-022',
+    name: "Heavy 'Cinder' Shotgun",
+    type: 'Weapon',
+    subtype: 'ranged',
+    rarity: 'Rare',
+    weight: 8.5,
+    value: 480,
+    requirements: { level: 18, class: ['Soldier'] },
+    stats: { dmg: 55, acc: 0.65, dur: 2 },
+    effects: [
+      { stat: 'status', value: 'burning', trigger: 'onHit', duration: 2 },
+    ],
+    description:
+      'Modified to fire incendiary shells, this brutal close-quarters weapon leaves targets with lingering thermal burns.',
+  },
+  {
+    id: 'i-023',
+    name: 'Military Grade MRE',
+    type: 'Food',
+    subtype: 'packaged',
+    rarity: 'Uncommon',
+    weight: 0.6,
+    value: 60,
+    requirements: { level: 1, class: null },
+    stats: { utility: 75, res: 5 },
+    effects: [
+      { stat: 'hunger', delta: -40, duration: null },
+      { stat: 'radiation', delta: 0, duration: null },
+    ],
+    description:
+      "A pre-war 'Meal Ready to Eat'. Tastes like cardboard, but it's highly nutritious and guaranteed radiation-free.",
+  },
+  {
+    id: 'i-024',
+    name: 'Morphine Auto-Injector',
+    type: 'Medicine',
+    subtype: 'injectable',
+    rarity: 'Rare',
+    weight: 0.1,
+    value: 310,
+    requirements: { level: 15, class: ['Medic', 'Soldier'] },
+    stats: { utility: 40, def: 15, dur: 3 },
+    effects: [
+      { stat: 'hp', delta: 40, duration: null },
+      { stat: 'pain', delta: -30, duration: 3 },
+    ],
+    description:
+      "Immediately dulls pain and stabilizes the user's focus, allowing them to ignore minor injuries during combat.",
+  },
+  {
+    id: 'i-025',
+    name: 'Magnetic Utility Belt',
+    type: 'Armor',
+    subtype: 'waist',
+    rarity: 'Common',
+    weight: 0.8,
+    value: 55,
+    requirements: { level: 5, class: ['Tinkerer', 'Scout'] },
+    stats: { cap: 12, def: 2 },
+    effects: [],
+    description:
+      'An industrial belt fitted with high-powered magnets to help organize scrap metal and specialized tools.',
+  },
+  {
+    id: 'i-026',
+    name: 'Shock Baton',
+    type: 'Weapon',
+    subtype: 'melee',
+    rarity: 'Uncommon',
+    weight: 2.0,
+    value: 175,
+    requirements: { level: 8, class: ['Tinkerer', 'Medic'] },
+    stats: { dmg: 25, dur: 1 },
+    effects: [
+      { stat: 'status', value: 'stunned', trigger: 'onCrit', duration: 1 },
+    ],
+    description:
+      'An electrified defensive tool used by Bastion guards to incapacitate rowdy Drifters without lethal force.',
+  },
+  {
+    id: 'i-027',
+    name: 'Lead-Lined Cloak',
+    type: 'Armor',
+    subtype: 'back',
+    rarity: 'Rare',
+    weight: 5.5,
+    value: 390,
+    requirements: { level: 20, class: null },
+    stats: { res: 80, def: 8 },
+    effects: [],
+    description:
+      'A heavy, cumbersome garment woven with lead fibers to provide maximum protection against high-radiation zones.',
+  },
+  {
+    id: 'i-028',
+    name: 'Experimental X-Serum',
+    type: 'Medicine',
+    subtype: 'injectable',
+    rarity: 'Epic',
+    weight: 0.2,
+    value: 950,
+    requirements: { level: 30, class: ['Medic'] },
+    stats: { utility: 120, res: 25, dur: 5 },
+    effects: [
+      { stat: 'hp', delta: 80, duration: null },
+      { stat: 'radiation', delta: -30, duration: null },
+      { stat: 'regen', delta: 5, duration: 5 },
+    ],
+    description:
+      'A glowing blue chemical cocktail that accelerates cellular regeneration and boosts the immune system significantly.',
+  },
+  {
+    id: 'i-029',
+    name: 'Plasma Cutter',
+    type: 'Weapon',
+    subtype: 'melee',
+    rarity: 'Rare',
+    weight: 3.8,
+    value: 560,
+    requirements: { level: 22, class: ['Tinkerer'] },
+    stats: { dmg: 48, acc: 0.88, dur: 2 },
+    effects: [
+      { stat: 'status', value: 'armorPierce', trigger: 'onHit', duration: null },
+    ],
+    description:
+      'Originally an engineering tool for salvaging ships, its high-heat beam melts through armor as easily as scrap.',
+  },
+  {
+    id: 'i-030',
+    name: "The 'Warden' Exo-Frame",
+    type: 'Armor',
+    subtype: 'full-body',
+    rarity: 'Legendary',
+    weight: 15.0,
+    value: 2800,
+    requirements: { level: 45, class: ['Soldier', 'Tinkerer'] },
+    stats: { def: 65, cap: 50, res: 15 },
+    effects: [],
+    description:
+      "A pinnacle of wasteland engineering, this motorized frame enhances the user's strength and resilience tenfold.",
+  },
+];
+
+
+// ─── Item Guide Entries ───────────────────────────────────────────────────────
+
+export interface ItemGuideEntry {
+  itemId: string;
+  name: string;
+  type: string;
+  subtype: string;
+  rarity: 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
+  lore: string;
+  gameplay: string;
+  tips: string[];
+  warnings: string[];
+  foundIn: string[];
+}
+
+export const itemGuide: ItemGuideEntry[] = [
+  {
+    itemId: 'i-021',
+    name: 'Tactical Recon Vest',
+    type: 'Armor',
+    subtype: 'chest',
+    rarity: 'Uncommon',
+    lore: 'Issued to Bastion Rangers before the Collapse. Most surviving units were stripped for scrap — finding one intact is a small miracle.',
+    gameplay: 'A balanced chest piece for mobile builds. The accuracy bonus makes it the go-to for Scout/Medic hybrids who need defense without sacrificing their aim.',
+    tips: [
+      'Pair with the Magnetic Utility Belt for extra carry capacity without a weight penalty.',
+      'Ideal on Medics running in the backline — the pocket layout speeds up item access.',
+    ],
+    warnings: [
+      'Soldier-locked builds cannot equip this — plan your class before spending Shards.',
+    ],
+    foundIn: ['Bastion merchants (mid-tier)', 'Abandoned ranger outposts', 'Contract rewards (level 8–14)'],
+  },
+  {
+    itemId: 'i-022',
+    name: "Heavy 'Cinder' Shotgun",
+    type: 'Weapon',
+    subtype: 'ranged',
+    rarity: 'Rare',
+    lore: "Originally an anti-mutant crowd-suppression weapon used by the Iron Order. The incendiary modification is unofficial — and very illegal inside Bastion walls.",
+    gameplay: 'Devastating in close-quarters encounters. The burning status effect deals damage over subsequent rounds, making it effective against high-HP targets.',
+    tips: [
+      'Use in the first round to proc the burn debuff, then switch to a lower AP-cost weapon while the DoT ticks.',
+      'Synergizes with Soldiers who have the Suppression passive — burning targets have reduced evasion.',
+    ],
+    warnings: [
+      'Drawing this inside a Bastion perimeter triggers a faction reputation penalty with the local controlling faction.',
+      'High weight (8.5) will strain builds without a carry-capacity buff.',
+    ],
+    foundIn: ['Iron Order armories (raided)', 'Tier-3 Encounter loot tables', 'Black market merchants'],
+  },
+  {
+    itemId: 'i-023',
+    name: 'Military Grade MRE',
+    type: 'Food',
+    subtype: 'packaged',
+    rarity: 'Uncommon',
+    lore: "Mass-produced by the pre-war Federal Logistics Bureau. The packaging has outlasted civilization itself — and arguably the taste hasn't improved.",
+    gameplay: 'One of the rare food items with zero radiation gain. Reliable hunger management for long wasteland runs where clean water is scarce.',
+    tips: [
+      'Stock before long expeditions — no radiation risk means you can eat freely without needing Rad-Flush Tabs.',
+      'Usable by all classes; good filler trade item with other Drifters.',
+    ],
+    warnings: [
+      'Provides no HP or radiation recovery — combine with a medicine item for full stat recovery.',
+    ],
+    foundIn: ['Most Bastion food merchants', 'Military bunker ruins', 'Supply crate Encounters'],
+  },
+  {
+    itemId: 'i-024',
+    name: 'Morphine Auto-Injector',
+    type: 'Medicine',
+    subtype: 'injectable',
+    rarity: 'Rare',
+    lore: "Pre-war battlefield triage equipment. Medics who know how to recalibrate the dosage can squeeze three uses out of a single unit — everyone else gets one.",
+    gameplay: 'Mid-combat HP recovery combined with a pain suppression debuff removal. The pain reduction lets the user act at full stat efficiency for 3 rounds.',
+    tips: [
+      'Best used when HP drops below 40% to maximize the pain suppression window.',
+      'Soldier/Medic multiclass builds can equip this — giving frontline Soldiers emergency self-recovery.',
+    ],
+    warnings: [
+      'Requires level 15 — lower-level Drifters cannot inject this without medical training.',
+      'Do not use preemptively — the duration is short and wasted outside of active damage.',
+    ],
+    foundIn: ['Medic faction merchants', 'Hospital ruin loot tables', 'High-tier contract rewards'],
+  },
+  {
+    itemId: 'i-025',
+    name: 'Magnetic Utility Belt',
+    type: 'Armor',
+    subtype: 'waist',
+    rarity: 'Common',
+    lore: "A standard-issue tool belt repurposed by Tinkerers who got tired of losing bolts in the dirt. The magnets were an upgrade — improvised, reliable, typical.",
+    gameplay: 'A lightweight carry-capacity extender. Low defense, but the +12 cap makes it essential for resource-heavy scavenging runs.',
+    tips: [
+      'Pair with a Tinkerer build running crafting routes — extra cap means more raw materials per expedition.',
+      'Scouts benefit from the cap bonus when balancing ammo + supplies for long patrols.',
+    ],
+    warnings: [
+      'Negligible combat value — swap out before heavy Encounter zones if defense is a concern.',
+    ],
+    foundIn: ['Common Bastion merchants', 'Tinkerer faction vendors', 'Starter contract rewards'],
+  },
+  {
+    itemId: 'i-026',
+    name: 'Shock Baton',
+    type: 'Weapon',
+    subtype: 'melee',
+    rarity: 'Uncommon',
+    lore: "Standard non-lethal equipment for Bastion security. Most guards modify the voltage limiter within a week on the job.",
+    gameplay: 'A reliable crowd-control option. The stun-on-crit effect can lock a target out of a round entirely, making it invaluable in turn-based encounters.',
+    tips: [
+      'Tinkerers with high crit modifiers can chain stuns across multi-enemy encounters.',
+      'Useful for Medics who need to prevent a target from acting while they recover HP.',
+    ],
+    warnings: [
+      'Low damage output — do not rely on this as a primary damage dealer against high-defense enemies.',
+    ],
+    foundIn: ['Bastion security surplus vendors', 'Errant faction merchants', 'Common Encounter drops'],
+  },
+  {
+    itemId: 'i-027',
+    name: 'Lead-Lined Cloak',
+    type: 'Armor',
+    subtype: 'back',
+    rarity: 'Rare',
+    lore: "Handcrafted by the Errants — nomads who spend more time in the Exclusion Zones than anywhere else. Lead is heavy. So is the toll of radiation sickness.",
+    gameplay: 'The highest radiation resistance available in a single armor slot. Mandatory for Exclusion Zone contracts and deep-ruin exploration.',
+    tips: [
+      'No class restriction — any build venturing into high-rad zones should carry this.',
+      'Combine with Rad-Flush Tabs for extended Exclusion Zone stays without radiation accumulation.',
+    ],
+    warnings: [
+      'High weight (5.5) combined with the carry limit is punishing — drop low-priority items before equipping.',
+      'Provides minimal combat defense — not a viable frontline armor piece.',
+    ],
+    foundIn: ['Errant faction merchants (high rep required)', 'Exclusion Zone ruins', 'Tier-2 scavenging drops'],
+  },
+  {
+    itemId: 'i-028',
+    name: 'Experimental X-Serum',
+    type: 'Medicine',
+    subtype: 'injectable',
+    rarity: 'Epic',
+    lore: "Lab-grown in a hidden Council research facility. The formula is incomplete — nobody knows the long-term effects. Current field results are... promising.",
+    gameplay: 'The most powerful recovery item in the game. Restores HP, purges radiation, and applies a multi-round regeneration effect. Reserved for critical situations.',
+    tips: [
+      'Save for boss-tier Encounters or Exclusion Zone contracts where attrition damage is unavoidable.',
+      'The regen effect stacks with passive Medic recovery bonuses — extremely efficient on Medic class.',
+    ],
+    warnings: [
+      'Medic-only. No other class can administer this correctly without risking a negative effect.',
+      'Extremely rare — do not use as a standard recovery item. Treat each unit as a one-time asset.',
+    ],
+    foundIn: ['Council faction merchants (max rep only)', 'Research facility ruins', 'Legendary contract rewards'],
+  },
+  {
+    itemId: 'i-029',
+    name: 'Plasma Cutter',
+    type: 'Weapon',
+    subtype: 'melee',
+    rarity: 'Rare',
+    lore: "Salvaged from a pre-war shipbreaking yard. The Tinkerers who reverse-engineered it never quite figured out the safety interlock. They decided it wasn't a priority.",
+    gameplay: 'High accuracy melee weapon with an armor-piercing effect on every hit. Counters heavily-armored enemies that would otherwise negate physical damage.',
+    tips: [
+      'Mandatory against Iron Order enemies, who typically wear high-def armor.',
+      'Tinkerer passives that boost tool-type weapons increase this weapon\'s damage output significantly.',
+    ],
+    warnings: [
+      'Tinkerer-exclusive. Soldiers cannot equip this — plan encounters accordingly.',
+      'Limited durability on the power cell — track condition in InventorySlot before long expeditions.',
+    ],
+    foundIn: ['Tinkerer faction black market', 'Shipyard ruin loot tables', 'Tier-3 Encounter rewards'],
+  },
+  {
+    itemId: 'i-030',
+    name: "The 'Warden' Exo-Frame",
+    type: 'Armor',
+    subtype: 'full-body',
+    rarity: 'Legendary',
+    lore: "There are fewer than a dozen confirmed Warden frames left in the wasteland. Each one has a history. Each one has a kill count. The frame doesn't care who's wearing it.",
+    gameplay: 'The single most powerful armor in the game. Provides unmatched defense, carry capacity, and radiation resistance simultaneously. A complete endgame chassis.',
+    tips: [
+      'The +50 cap bonus enables extreme loadouts — carry a full combat kit plus crafting materials without compromise.',
+      'Soldier/Tinkerer builds unlock this — the combination is intentional. The frame rewards technical mastery.',
+    ],
+    warnings: [
+      'Level 45 requirement makes this a true endgame item. Do not plan around it before reaching that threshold.',
+      'The 15.0 weight is the frame itself — your remaining carry capacity will reflect accordingly.',
+      'Highly visible in Bastions. Some Factions will react to a Drifter wearing Iron Order-adjacent equipment.',
+    ],
+    foundIn: ['Legendary contract reward (one-time)', 'Iron Order fortress ruins', 'Council black vault (max rep)'],
+  },
+];
+
+
+// ─── Stat Guide Entries ───────────────────────────────────────────────────────
+
+export interface StatGuideEntry {
+  stat: string;
+  label: string;
+  appliesTo: ('Weapon' | 'Armor' | 'Medicine' | 'Food')[];
+  description: string;
+  gameplay: string;
+  unit: string | null;
+}
+
+export const statGuide: StatGuideEntry[] = [
+  {
+    stat: 'dmg',
+    label: 'Damage',
+    appliesTo: ['Weapon'],
+    description: 'Raw damage output dealt to a target per successful hit, before defense reduction.',
+    gameplay: 'The primary offensive stat. Reduced by the target\'s DEF on resolution. High DMG weapons are essential against tanky enemies but typically come with weight or class penalties.',
+    unit: 'points',
+  },
+  {
+    stat: 'acc',
+    label: 'Accuracy',
+    appliesTo: ['Weapon', 'Armor'],
+    description: 'Modifies the base hit probability of an attack, or the Drifter\'s global accuracy when provided by armor.',
+    gameplay: 'Expressed as a decimal modifier (e.g. 0.05 = +5%). Accuracy below the enemy\'s evasion threshold causes misses. Ranged weapons are more sensitive to this stat than melee.',
+    unit: 'decimal modifier',
+  },
+  {
+    stat: 'dur',
+    label: 'Effect Duration',
+    appliesTo: ['Weapon', 'Medicine'],
+    description: 'The number of combat rounds a triggered effect (burn, stun, pain suppression, regen) remains active.',
+    gameplay: 'A dur of 1 means the effect resolves at the end of the current round. Higher values enable sustained debuffing or buffing strategies across multiple turns.',
+    unit: 'rounds',
+  },
+  {
+    stat: 'def',
+    label: 'Defense',
+    appliesTo: ['Armor', 'Medicine'],
+    description: 'Flat damage reduction applied to incoming hits before HP loss is calculated.',
+    gameplay: 'Each point of DEF absorbs one point of incoming damage. Stacks across equipped armor pieces. High-DEF builds counter high-DMG enemies but can be bypassed by armor-piercing effects.',
+    unit: 'points',
+  },
+  {
+    stat: 'res',
+    label: 'Radiation Resistance',
+    appliesTo: ['Armor', 'Food'],
+    description: 'Reduces the radiation accumulation received from environmental exposure, contaminated food, or radiation-based attacks.',
+    gameplay: 'Radiation is a passive death timer — unchecked, it eventually caps and kills the Drifter. RES slows accumulation and is mandatory for Exclusion Zone runs.',
+    unit: 'points',
+  },
+  {
+    stat: 'cap',
+    label: 'Carry Capacity Bonus',
+    appliesTo: ['Armor'],
+    description: 'Increases the Drifter\'s maximum carry weight limit beyond the class base value.',
+    gameplay: 'Critical for scavenging and crafting builds that carry large quantities of raw materials. Does not reduce item weight — it raises the ceiling.',
+    unit: 'kg',
+  },
+  {
+    stat: 'utility',
+    label: 'Utility',
+    appliesTo: ['Medicine', 'Food'],
+    description: 'A composite effectiveness score representing how much the item restores or improves the Drifter\'s condition (HP, hunger, status recovery).',
+    gameplay: 'The higher the utility, the more impactful the consumable. Used server-side to calculate the actual stat deltas applied on use, scaled by the Drifter\'s level and class bonuses.',
+    unit: 'points',
   },
 ];
