@@ -1,3 +1,5 @@
+import {z} from "zod"
+
 export interface Bastion {
   id: string;
   name: string;
@@ -28,13 +30,15 @@ export interface Drifter {
   };
 }
 
-export interface Faction {
-  id: string;
-  name: string;
-  ideology: string;
-  territory: string[];
-  description: string;
-}
+export const FactionSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  ideology: z.string(),
+  territory: z.string().array().nonempty(),
+  description:z.string()
+})
+
+export type Faction = z.infer<typeof FactionSchema>
 
 type ItemEffect =
   | {
