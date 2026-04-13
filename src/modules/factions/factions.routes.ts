@@ -18,7 +18,16 @@ router.post("/", (req:Request, res:Response)=>{
   const validation = FactionSchema.safeParse(req.body)
 
   if(!validation.success){
-    return res.status(400).json({errors: treeifyError(validation.error)})
+    const errorResponse: ApiResponse<null> = {
+      success: false,
+      data: null,
+      error: {
+        code: "VALIDATION_FAILED",
+        message: "Le formulaire contient des erreurs",
+        details: treeifyError(validation.error)
+      }
+    };
+    return res.status(400).json(errorResponse)
   }
 
   const newFaction = validation.data;
@@ -32,18 +41,26 @@ router.post("/", (req:Request, res:Response)=>{
   }
 
   if(isNewFactionAlreadyInDb()){
-    return res.status(409).json({message: "Entry already exists."})
+    const errorResponse: ApiResponse<null> = {
+      success: false,
+      data: null,
+      error: {
+        code: 'RESSOURCE_ALREADY_EXISTS',
+        message: "Entry already exists.",
+      },
+    };
+    return res.status(409).json(errorResponse)
   }
 
   factions.push(newFaction)
 
-  const response: ApiResponse<Faction> = {
+  const successResponse: ApiResponse<Faction> = {
     success: true,
     message: `Faction ${newFaction.name} successfully created.`,
     data: newFaction
   }
 
-  res.status(201).json(response)
+  res.status(201).json(successResponse)
 })
 
 export default router
